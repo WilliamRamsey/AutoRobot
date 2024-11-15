@@ -1,29 +1,29 @@
 function sendDirection(direction) {
-    direction_url = "http://10.220.13.93:5500/input"
-    fetch(`${direction_url}?direction=${direction}`, 
+    fetch(`/input?direction=${direction}`, 
     {method: "POST", 
     body: direction,
     headers: {'Content-Type': 'text/html; charset=utf-8'}})
 }
 
 
-window.addEventListener("keydown", function (event) {
-    if (event.defaultPrevented) {
-      return; // Do nothing if the event was already processed
-    }
-  
+document.addEventListener("keydown", function (event) {
+
+  if (event.defaultPrevented) {
+    return; // Do nothing if the event was already processed
+  }
+
     switch (event.key) {
       case "ArrowDown":
-        sendDirection("S")
+        sendDirection("Sdown")
         break;
       case "ArrowUp":
-        sendDirection("W")
+        sendDirection("Wdown")
         break;
       case "ArrowLeft":
-        sendDirection("A")
+        sendDirection("Adown")
         break;
       case "ArrowRight":
-        sendDirection("D")
+        sendDirection("Ddown")
         break;
       default:
         return; // Quit when this doesn't handle the key event.
@@ -32,5 +32,31 @@ window.addEventListener("keydown", function (event) {
     // Cancel the default action to avoid it being handled twice
     event.preventDefault();
   }, true);
-  // the last option dispatches the event to the listener first,
-  // then dispatches event to window
+
+
+document.addEventListener("keyup", function (event) {  
+
+  if (event.defaultPrevented) {
+    return; // Do nothing if the event was already processed
+  }
+  
+    switch (event.key) {
+      case "ArrowDown":
+        sendDirection("Sup")
+        break;
+      case "ArrowUp":
+        sendDirection("Wup")
+        break;
+      case "ArrowLeft":
+        sendDirection("Aup")
+        break;
+      case "ArrowRight":
+        sendDirection("Dup")
+        break;
+      default:
+        return; // Quit when this doesn't handle the key event.
+    }
+  
+    // Cancel the default action to avoid it being handled twice
+    event.preventDefault();
+  }, true);
