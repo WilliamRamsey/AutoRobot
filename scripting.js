@@ -5,7 +5,6 @@ function sendDirection(direction) {
     headers: {'Content-Type': 'text/html; charset=utf-8'}})
 }
 
-
 document.addEventListener("keydown", function (event) {
 
   if (event.defaultPrevented) {
@@ -32,7 +31,6 @@ document.addEventListener("keydown", function (event) {
     // Cancel the default action to avoid it being handled twice
     event.preventDefault();
   }, true);
-
 
 document.addEventListener("keyup", function (event) {  
 

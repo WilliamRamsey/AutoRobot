@@ -1,6 +1,5 @@
 from flask import Flask, request
-import socket 
-from motorControl import *
+# from motorControl import *
 
 api = Flask(__name__)
 @api.route("/website", methods=["POST", "GET"])
